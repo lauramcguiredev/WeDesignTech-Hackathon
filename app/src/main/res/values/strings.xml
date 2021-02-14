@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Axolotl</string>
+    <string name="title_device_list">Devices</string>
+    <string name="title_device_detail">Device Detail</string>
 </resources>

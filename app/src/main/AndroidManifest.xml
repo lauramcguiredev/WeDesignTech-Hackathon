@@ -9,7 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Axolotl">
-        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".AddDevice"></activity>
+        <activity
+            android:name=".DeviceListActivity"
+            android:label="@string/title_device_list"
+            android:theme="@style/Theme.Axolotl.NoActionBar" />
+        <activity
+            android:name=".DeviceDetailActivity"
+            android:label="@string/title_device_detail"
+            android:parentActivityName=".DeviceListActivity"
+            android:theme="@style/Theme.Axolotl.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.axolotl.DeviceListActivity" />
+        </activity>
+        <activity android:name=".SignUpActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

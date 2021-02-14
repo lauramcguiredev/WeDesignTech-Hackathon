@@ -32,6 +32,7 @@ public class SignUpActivity extends AppCompatActivity {
         final Button signUpButton = findViewById(R.id.signUpButton);
         final EditText userField = findViewById(R.id.emailField);
         final EditText passField = findViewById(R.id.passField);
+        final EditText nameField = findViewById(R.id.name);
 
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
@@ -42,7 +43,9 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String user = userField.getText().toString();
                 String pass = passField.getText().toString();
-                createAccount(user, pass);
+                String name = nameField.getText().toString();
+
+                createAccount(user, pass, name);
             }
         });
     }
@@ -57,7 +60,7 @@ public class SignUpActivity extends AppCompatActivity {
         }
     }
 
-    private void createAccount(String email, String password) {
+    private void createAccount(String email, String password, String username) {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -66,7 +69,8 @@ public class SignUpActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(SignUpActivity.this, "Authentication succeeded.",
                                     Toast.LENGTH_SHORT).show();
-                            dataRef.child("email").setValue(email);
+                            dataRef.child(user.getUid()).child("email").setValue(email);
+                            dataRef.child(user.getUid()).child("name").setValue(username);
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         } else {
                             Toast.makeText(SignUpActivity.this, "Authentication failed.",
