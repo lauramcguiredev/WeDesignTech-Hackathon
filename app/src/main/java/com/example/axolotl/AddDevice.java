@@ -35,7 +35,7 @@ public class AddDevice extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         database = FirebaseDatabase.getInstance();
-        dataRef = database.getReference("users");
+        dataRef = database.getReference("users").child(user.getUid()).child("devices").push();
         deviceHeader = findViewById(R.id.deviceHeader);
 
         EditText deviceKey = findViewById(R.id.codeField);
