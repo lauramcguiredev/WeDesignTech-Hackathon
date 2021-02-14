@@ -31,7 +31,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         final Button signUpButton = findViewById(R.id.signUpButton);
         final EditText userField = findViewById(R.id.emailField);
-        final EditText passField = findViewById(R.id.passField);
+        final EditText passField = findViewById(R.id.codeField);
         final EditText nameField = findViewById(R.id.name);
 
         mAuth = FirebaseAuth.getInstance();

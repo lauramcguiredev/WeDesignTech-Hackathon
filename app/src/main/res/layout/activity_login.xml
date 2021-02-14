@@ -79,7 +79,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/passField"
+                android:id="@+id/codeField"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -101,7 +101,7 @@
                 android:textSize="30sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/passField" />
+                app:layout_constraintTop_toBottomOf="@+id/codeField" />
 
             <Button
                 android:id="@+id/createAccountButton"
@@ -130,9 +130,9 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="10dp"
-                app:layout_constraintBottom_toBottomOf="@+id/passField"
+                app:layout_constraintBottom_toBottomOf="@+id/codeField"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/passField"
+                app:layout_constraintTop_toTopOf="@+id/codeField"
                 app:srcCompat="@drawable/ic_baseline_lock_24" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
