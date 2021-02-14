@@ -16,14 +16,14 @@
     This layout is a two-pane layout for the Devices master/detail flow.
     -->
 
-    <androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/device_list"
         android:name="com.example.axolotl.DeviceListFragment"
         android:layout_width="@dimen/item_width"
         android:layout_height="match_parent"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+        android:background="#A8D8AA"
         app:layoutManager="LinearLayoutManager"
         tools:context="com.example.axolotl.DeviceListActivity"
         tools:listitem="@layout/device_list_content" />

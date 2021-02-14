@@ -6,8 +6,7 @@
     android:name="com.example.axolotl.DeviceListFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
+    android:background="#A8D8AA"
     app:layoutManager="LinearLayoutManager"
     tools:context=".DeviceListActivity"
     tools:listitem="@layout/device_list_content" />

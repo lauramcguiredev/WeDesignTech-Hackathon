@@ -1,5 +1,10 @@
 package com.example.axolotl.dummy;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +17,10 @@ import java.util.Map;
  * TODO: Replace all uses of this class before publishing your app.
  */
 public class DummyContent {
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference dataRef = database.getReference("users");
+    private FirebaseUser user = mAuth.getCurrentUser();
 
     /**
      * An array of sample (dummy) items.
@@ -25,6 +34,8 @@ public class DummyContent {
 
     static {
         //Query Devices from Database
+        String[] x = {"Hello", "Test"};
+        addItem(new DummyItem("1111-1111-1111", "Apple Macbook Pro", x));
     }
 
     private static void addItem(DummyItem item) {
@@ -32,36 +43,37 @@ public class DummyContent {
         ITEM_MAP.put(item.id, item);
     }
 
-    private static DummyItem createDummyItem(int position) {
-        return new DummyItem(String.valueOf(position), "Item " + position, makeDetails(position));
-    }
+//    private static DummyItem createDummyItem(int position) {
+//        return new DummyItem(String.valueOf(position), "Item " + position, makeDetails(position));
+//    }
 
-    private static String makeDetails(int position) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Details about Item: ").append(position);
-        for (int i = 0; i < position; i++) {
-            builder.append("\nMore details information here.");
-        }
-        return builder.toString();
-    }
+//    private static String makeDetails(int position) {
+//        StringBuilder builder = new StringBuilder();
+//        builder.append("Details about Item: ").append(position);
+//        for (int i = 0; i < position; i++) {
+//            builder.append("\nMore details information here.");
+//        }
+//        return builder.toString();
+//    }
 
     /**
      * A dummy item representing a piece of content.
      */
     public static class DummyItem {
-        public final String id;
-        public final String content;
-        public final String details;
+        public String id;
+        public String deviceType;
+        public String[] modular;
 
-        public DummyItem(String id, String content, String details) {
+        public DummyItem(String id, String type, String[] modularParts) {
             this.id = id;
-            this.content = content;
-            this.details = details;
+            this.deviceType = type;
+            this.modular = modularParts;
         }
 
+        //NOT SURE ABOUT THIS
         @Override
         public String toString() {
-            return content;
+            return deviceType;
         }
     }
 }
