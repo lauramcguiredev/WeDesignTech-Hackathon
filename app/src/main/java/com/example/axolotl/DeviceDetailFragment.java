@@ -44,16 +44,8 @@ public class DeviceDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         if (getArguments().containsKey(ARG_ITEM_ID)) {
-            // Load the dummy content specified by the fragment
-            // arguments. In a real-world scenario, use a Loader
-            // to load content from a content provider.
             mItem = DummyContent.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
-
             Activity activity = this.getActivity();
-            CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
-            if (appBarLayout != null) {
-                appBarLayout.setTitle(mItem.deviceType);
-            }
         }
     }
 
@@ -61,11 +53,17 @@ public class DeviceDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.device_detail, container, false);
-
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
-            //This may be formatted ugly
-            ((TextView) rootView.findViewById(R.id.device_detail)).setText(mItem.modular.toString());
+            ((TextView) rootView.findViewById(R.id.device_detail)).append("Product Name:\n");
+            ((TextView) rootView.findViewById(R.id.device_detail)).append(mItem.deviceType + "\n\n");
+            ((TextView) rootView.findViewById(R.id.device_detail)).append("Product ID:\n");
+            ((TextView) rootView.findViewById(R.id.device_detail)).append(mItem.id + "\n\n");
+            ((TextView) rootView.findViewById(R.id.device_detail)).append(mItem.modular[0]);
+            int position;
+            for(position = 1; position < mItem.modular.length; position++){
+                ((TextView) rootView.findViewById(R.id.device_detail)).append("\n" + mItem.modular[position]);
+            }
         }
 
         return rootView;
