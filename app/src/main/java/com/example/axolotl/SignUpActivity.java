@@ -67,14 +67,11 @@ public class SignUpActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(SignUpActivity.this, "Authentication succeeded.",
-                                    Toast.LENGTH_SHORT).show();
                             dataRef.child(user.getUid()).child("email").setValue(email);
                             dataRef.child(user.getUid()).child("name").setValue(username);
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         } else {
-                            Toast.makeText(SignUpActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+                            //Error message here
                         }
                     }
                 });

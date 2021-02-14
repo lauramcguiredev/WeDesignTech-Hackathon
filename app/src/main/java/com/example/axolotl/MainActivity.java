@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         database = FirebaseDatabase.getInstance();
         dataRef = database.getReference("users");
         mAuth = FirebaseAuth.getInstance();
@@ -65,6 +65,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
         getName(dataRef.child(user.getUid()).child("name"));
+
+        final ImageView home = findViewById(R.id.homeIcon);
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            }
+        });
     }
 
     private void getName(DatabaseReference dataReference) {

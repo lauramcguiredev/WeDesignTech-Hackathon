@@ -1,23 +1,27 @@
 package com.example.axolotl;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.axolotl.dummy.DummyContent;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
@@ -36,36 +40,50 @@ public class DeviceListActivity extends AppCompatActivity {
      * device.
      */
     private boolean mTwoPane;
+    TextView deviceHeader;
+    private FirebaseAuth mAuth;
+    private FirebaseDatabase database;
+    private DatabaseReference dataRef;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_list);
 
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//        toolbar.setTitle(getTitle());
-
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-
         if (findViewById(R.id.device_detail_container) != null) {
-            // The detail container view will be present only in the
-            // large-screen layouts (res/values-w900dp).
-            // If this view is present, then the
-            // activity should be in two-pane mode.
             mTwoPane = true;
         }
 
         View recyclerView = findViewById(R.id.device_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
+
+        final Button logout = findViewById(R.id.logoutButton);
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+            }
+        });
+
+        final ImageView home = findViewById(R.id.homeIcon);
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            }
+        });
+
+        deviceHeader = findViewById(R.id.deviceHeader);
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+        database = FirebaseDatabase.getInstance();
+        dataRef = database.getReference("users");
+        getName(dataRef.child(user.getUid()).child("name"));
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
@@ -139,5 +157,20 @@ public class DeviceListActivity extends AppCompatActivity {
                 mContentView = (TextView) view.findViewById(R.id.content);
             }
         }
+    }
+
+    private void getName(DatabaseReference dataReference) {
+        ValueEventListener nameListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String uName = dataSnapshot.getValue(String.class);
+                deviceHeader.setText(uName + "'s Devices");
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                //Do nothing
+            }
+        };
+        dataReference.addValueEventListener(nameListener);
     }
 }
