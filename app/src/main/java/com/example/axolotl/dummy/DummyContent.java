@@ -1,27 +1,11 @@
 package com.example.axolotl.dummy;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Helper class for providing sample content for user interfaces created by
- * Android template wizards.
- * <p>
- * TODO: Replace all uses of this class before publishing your app.
- */
 public class DummyContent {
-    FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference dataRef = database.getReference("users");
-    private FirebaseUser user = mAuth.getCurrentUser();
-
     /**
      * An array of sample (dummy) items.
      */

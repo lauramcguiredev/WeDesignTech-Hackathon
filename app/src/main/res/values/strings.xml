@@ -2,4 +2,20 @@
     <string name="app_name">Axolotl</string>
     <string name="title_device_list">Devices</string>
     <string name="title_device_detail">Device Detail</string>
+    <string name="axolotl">Axolotl</string>
+    <string name="welcome">Welcome!</string>
+    <string name="logout">Logout</string>
+    <string name="enter_your_unique_device_code">Enter Your Unique Device Code:</string>
+    <string name="add_device">Add Device</string>
+    <string name="_0000_0000_0000">0000-0000-0000</string>
+    <string name="todo">TODO</string>
+    <string name="regeneration_valuation">Regeneration valuation.</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="name">Name</string>
+    <string name="create_account">Create Account</string>
+    <string name="register_a_device">Register a Device</string>
+    <string name="my_devices">My Devices</string>
 </resources>

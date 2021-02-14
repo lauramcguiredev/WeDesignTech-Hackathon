@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Axolotl"
+                android:text="@string/axolotl"
                 android:textSize="80sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +42,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/appTitle"
-                android:text="Regeneration valuation." />
+                android:text="@string/regeneration_valuation" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
@@ -69,14 +69,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="10dp"
-                android:hint="Email"
+                android:hint="@string/email"
                 android:inputType="text"
                 android:shadowColor="#FFFFFF"
                 android:textColor="#272525"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView5"
-                app:layout_constraintTop_toBottomOf="@+id/name" />
+                app:layout_constraintTop_toBottomOf="@+id/name"
+                android:importantForAutofill="no" />
 
             <EditText
                 android:id="@+id/codeField"
@@ -84,13 +85,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="10dp"
-                android:hint="Password"
+                android:hint="@string/password"
                 android:inputType="text"
                 android:textColor="#272525"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView6"
-                app:layout_constraintTop_toBottomOf="@+id/emailField" />
+                app:layout_constraintTop_toBottomOf="@+id/emailField"
+                android:importantForAutofill="no" />
 
             <EditText
                 android:id="@+id/name"
@@ -98,20 +100,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="10dp"
-                android:hint="Name"
+                android:hint="@string/name"
                 android:inputType="text"
                 android:textColor="#272525"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView7"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:importantForAutofill="no" />
 
             <Button
                 android:id="@+id/signUpButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
-                android:text="Create Account"
+                android:text="@string/create_account"
                 android:textSize="30sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -125,7 +128,8 @@
                 app:layout_constraintBottom_toBottomOf="@+id/emailField"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/emailField"
-                app:srcCompat="@drawable/ic_baseline_email_24" />
+                app:srcCompat="@drawable/ic_baseline_email_24"
+                android:contentDescription="@string/todo" />
 
             <ImageView
                 android:id="@+id/imageView6"
@@ -135,7 +139,8 @@
                 app:layout_constraintBottom_toBottomOf="@+id/codeField"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/codeField"
-                app:srcCompat="@drawable/ic_baseline_lock_24" />
+                app:srcCompat="@drawable/ic_baseline_lock_24"
+                android:contentDescription="@string/todo" />
 
             <ImageView
                 android:id="@+id/imageView7"
@@ -145,7 +150,8 @@
                 app:layout_constraintBottom_toBottomOf="@+id/name"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/name"
-                app:srcCompat="@drawable/ic_baseline_person_24" />
+                app:srcCompat="@drawable/ic_baseline_person_24"
+                android:contentDescription="@string/todo" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
